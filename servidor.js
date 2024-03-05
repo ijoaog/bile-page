@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = 3050; // Escolha a porta desejada, por exemplo, 3000
+const port = 4001;
 
 app.use(express.static('public'));
 

@@ -1,43 +1,52 @@
-<!-- public/index.html -->
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bile Vem Aí - Em Construção</title>
-	<script src="servidor.js" defer></script>
+    <script src="servidor.js" defer></script>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f4f4f4;
             margin: 0;
             padding: 0;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
         }
 
-        .container {
+        .container, .container-special {
             text-align: center;
-            padding: 20px;
+            padding: 30px;
             background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            margin-bottom: 30px;
+            opacity: 1;
+            transition: opacity 0.5s ease-in-out;
+            max-width: 600px;
         }
 
-        h1 {
+        h1, p {
+            margin: 0;
             color: #333;
         }
 
         p {
-            color: #555;
             margin-bottom: 20px;
+            color: #555;
         }
 
         .construction-img {
             max-width: 100%;
             height: auto;
+            margin-top: 30px;
+            border-radius: 10px;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
         }
 
         .door-icon {
@@ -49,7 +58,52 @@
         .port-message {
             font-size: 14px;
             color: #777;
-            margin-top: 10px;
+            margin-top: 15px;
+        }
+
+        #inputContainer {
+            display: none;
+            margin-top: 30px;
+        }
+
+        input, button {
+            margin-top: 15px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        input {
+            border: 1px solid #ccc;
+            transition: border-color 0.3s ease-in-out;
+        }
+
+        input:focus {
+            border-color: #4CAF50;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            background: linear-gradient(to right, #4CAF50, #45a049);
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s ease-in-out;
+        }
+
+        button:hover {
+            background: linear-gradient(to right, #45a049, #4CAF50);
+        }
+
+        /* Responsive styles */
+        @media (max-width: 600px) {
+            .container, .container-special {
+                width: 90%;
+            }
         }
     </style>
 </head>
@@ -59,5 +113,49 @@
     <h1>Bile Vem Aí</h1>
     <p>Estamos trabalhando duro para trazer algo incrível para você. Em breve, Bile estará aqui!</p>
 </div>
+
+<div class="container-special" id="specialContainer">
+    <p>Se você é Camili Ferreire, clique no "Aqui"!</p>
+    <button onclick="showInput()">Aqui!</button>
+    <div id="inputContainer">
+        <p>Como minha sogra é carinhosamente chamada? (Dica: email)</p>
+        <input type="text" id="textInput" placeholder="ein ein ein?">
+        <button onclick="checkInput()">Enviar</button>
+    </div>
+</div>
+
+<script>
+    function showInput() {
+        var inputContainer = document.getElementById("inputContainer");
+        inputContainer.style.display = "block";
+    }
+
+    function checkInput() {
+        var userInput = document.getElementById("textInput").value.toLowerCase();
+
+        if (userInput === "juli_fer13") {
+            var image = document.createElement("img");
+            image.src = "./img/camiebile.jpeg"; // Substitua pelo caminho real da sua imagem
+            image.className = "construction-img";
+            document.getElementById("specialContainer").appendChild(image);
+
+            // Adiciona o efeito de fade-in
+            setTimeout(function() {
+                image.style.opacity = 1;
+
+                // Rola a página para baixo
+                window.scrollTo(0, document.body.scrollHeight);
+            }, 10);
+        }
+    }
+        // Adiciona o evento de escuta para a tecla "Enter" no campo de input
+    document.getElementById("textInput").addEventListener("keyup", function(event) {
+        if (event.key === "Enter") {
+            event.preventDefault(); // Evita o comportamento padrão de pressionar "Enter" em um formulário
+            checkInput(); // Chama a função checkInput quando "Enter" é pressionado
+        }
+    });
+</script>
+
 </body>
 </html>

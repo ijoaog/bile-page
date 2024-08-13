@@ -1,0 +1,120 @@
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #e0e0e0;
+    --error-color: #e74c3c;
+    --success-color: #27ae60;
+    --text-color: #333;
+    --background-color: #f0f4f8;
+    --container-bg: #ffffff;
+    --container-shadow: rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    text-align: center;
+    width: 1500px; /* Ajuste a largura do contêiner para comportar a barra mais larga */
+    margin: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: var(--container-bg);
+    box-shadow: 0 0 10px var(--container-shadow);
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-size: 2rem;
+    color: var(--primary-color);
+}
+
+.progress-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    margin: 20px 0;
+    width: 100%;
+}
+
+.progress-image {
+    max-width: 150px;
+    height: auto;
+    border-radius: 10px;
+}
+
+.progress-image.middle {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transition: left 0.5s;
+}
+
+.progress-container {
+    flex-grow: 1;
+    margin: 0 20px;
+    position: relative;
+}
+
+.progress-bar-container {
+    height: 50px; /* Aumentado */
+    width: 100%; /* Ajuste para ocupar toda a largura disponível */
+    background-color: var(--secondary-color);
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: var(--primary-color);
+    width: 0; /* Start at 0% */
+    transition: width 0.5s;
+    position: relative;
+}
+
+.progress-text {
+    font-size: 1rem;
+    margin: 10px 0;
+}
+
+#progress-percent {
+    font-weight: bold;
+}
+
+.countdown {
+    font-size: 1.5rem;
+    color: var(--error-color);
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.completion-message {
+    display: none;
+    font-size: 2rem;
+    color: var(--success-color);
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.progress-image.start,
+.progress-image.end {
+    max-width: 300px; /* Ajuste conforme necessário */
+}
+
+.progress-image.start {
+    position: relative; /* Mantenha a posição padrão para a imagem inicial */
+}
+
+.progress-image.end {
+    position: relative; /* Mantenha a posição padrão para a imagem final */
+}
